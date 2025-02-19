@@ -1,6 +1,6 @@
 # nvd-harvester
 
-_**Your go-to tool Efficient Multi-Threaded NVD CVE Data Fetching**_
+_**Your go-to tool for Efficient Multi-Threaded NVD CVE Data Fetching**_
 
 Tired of wrestling with the NVD CVE API? `nvd-harvester` is an open-source tool designed to efficiently fetch, mirror, and manage NVD CVE data. It provides a robust and reliable solution for keeping your vulnerability database up-to-date.
 
