@@ -7,6 +7,8 @@ import concurrent.futures
 from datetime import datetime, timezone
 import json
 
+class DownloadError(Exception):
+    pass
 
 def greeting(message):
     """
@@ -646,10 +648,14 @@ def parse_cve_nvd(df, drop_parsed_columns=True):
     # Parse Weakness IDs
     df['cwe'] = df['weaknesses'].apply(parse_weaknesses)
 
-    # Parse Reference URLs
+    # Parse Reference URLs and handle cases when the CVEs is missing the information
+    if 'references' not in df.columns:
+        df['references'] = None
     df['referenceUrl'] = df['references'].apply(parse_reference_urls)
     
-    # Parse Vulnerable CPEs
+    # Parse Vulnerable CPEs and handle cases when the CVEs is missing the information
+    if 'configurations' not in df.columns:
+        df['configurations'] = None
     df['cpe'] = df['configurations'].apply(parse_cpe)
 
     # Clean up column names

@@ -8,10 +8,6 @@ from datetime import datetime, timezone
 import json
 
 
-class DownloadError(Exception):
-    pass
-
-
 def main():
     # ##########################################################################################
     greeting('Download NIST NVD Database')
@@ -23,8 +19,8 @@ def main():
     data_folder = 'data'
     csv_data_file = f'{data_folder}/nvd-cve-kb.csv'
     repo_local = f'{data_folder}/raw-nvd-json'
-    drop_references = True      # OPTIONAL: This column contain very long strings and spills over if you open the CSV in Excel
-    drop_cpe = True             # OPTIONAL: This column contain very long strings and spills over if you open the CSV in Excel
+    drop_references = False      # OPTIONAL: This column contain very long strings and spills over if you open the CSV in Excel
+    drop_cpe = False            # OPTIONAL: This column contain very long strings and spills over if you open the CSV in Excel
     keep_diff_csv = False       # OPTIONAL: Could be useful to track CVE changes overtime
     
     # API config
