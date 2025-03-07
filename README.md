@@ -46,35 +46,40 @@ Install the required Python packages using pip:
 
 ```bash
 (.venv) ➜  nvd-harvester git:(main) ✗ python /nvd-harvester/nvd-harvester.py
-
 #####################################################################################
                              Download NIST NVD Database                             
 #####################################################################################
 
-[1] Fetch NVD data
-        Initial full NVD dump. It can take a while!
-        Total Records: 281831, Chunk Size 2000
+[1] Check CVE counts
+        [!] File doesn't exist: data/raw-nvd-json/last_update.json
+        [*] NVD: 284517, JSON: 0, CSV: 0, Last Sync: 0
 
-        Retrieved: 2000, Remaining: 279831
-        Retrieved: 4000, Remaining: 277831
-        Retrieved: 6000, Remaining: 275831
-        Retrieved: 8000, Remaining: 273831
-        Retrieved: 10000, Remaining: 271831
-        Retrieved: 12000, Remaining: 269831
-        Retrieved: 14000, Remaining: 267831
-        ...
-        
-        Download complete in 14m 10s! Retrieved 281831 CVEs
+[2] Fetch NVD data
+        [*] Performing Full sync. Reason: No previous data
+        [*] NVD records: 284517, Chunk Size 2000
+            Retrieved: 2000, Remaining: 282517
+            Retrieved: 4000, Remaining: 280517
+            Retrieved: 6000, Remaining: 278517
+            Retrieved: 8000, Remaining: 276517
+            ...
+            Retrieved: 280517, Remaining: 4000
+            Retrieved: 282517, Remaining: 2000
+            Retrieved: 284517, Remaining: 0
 
-[2] Process CVE files
-        nvd-cve-kb.csv is missing!
-        281831 CVE updates.
+        [*] NVD download complete in 1m 35s! Retrieved 284517 CVEs
+        [*] Full sync successful - 284517 CVEs synced
 
-[3] Extract JSON Data
-        Total CVEs: 281831
+[3] Find CVE JSON file changes
+        [*] Processing All 284517 JSON files for full CSV build
 
-[4] Write files
-        Writing: nvd-cve-kb.csv
+[4] Parse CVE JSON files
+        [*] All 284517 CVE files processed successfully
+
+[5] Summary
+        [*] NVD: 284517, JSON: 284517, CSV: 284517, Last Sync: 0
+
+[6] Write files
+        [*] Writing: data/nvd-cve-kb.csv
 ```
 
 ## License
