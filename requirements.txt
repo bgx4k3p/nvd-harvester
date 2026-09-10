@@ -1,2 +1,5 @@
+# Parse path tested against pandas 2.2.3 and 3.0.5; syntax verified on Python 3.9-3.14.
 pandas>=2.2.3
-Requests>=2.32.3
+# 2.33.0 fixes GHSA-9hjg-9r4m-mvj7 (.netrc credential leak via malicious URLs)
+# and GHSA-gc5v-m9x4-r6x2 (insecure temp file reuse in extract_zipped_paths).
+requests>=2.33.0

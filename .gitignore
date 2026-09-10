@@ -6,3 +6,4 @@
 **/reports/
 **/dev/
 **/db
+**/.ruff_cache/

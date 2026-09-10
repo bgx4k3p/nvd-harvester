@@ -1,0 +1,23 @@
+# Lint baseline for nvd-harvester. Run: ruff check .
+target-version = "py39"
+line-length = 120
+
+[lint]
+# Ruff's defaults plus the checks that matter for a long-running data pipeline:
+# bugbear correctness, comprehension and datetime pitfalls, import hygiene.
+extend-select = ["B", "C4", "DTZ", "I", "PL", "RUF", "UP"]
+
+# The extraction path deliberately catches broad exceptions at I/O and JSON-parsing
+# boundaries. A single unreadable or malformed file among hundreds of thousands must be
+# reported and skipped, not allowed to abort a sync that takes minutes to reach that point.
+ignore = ["BLE001"]
+
+# Structural metrics, suppressed deliberately rather than left to be ignored by habit:
+# main() is a linear, numbered pipeline that reads better whole than split, the fetch
+# helpers genuinely need their URL, headers, paths, retry and date-window arguments, and
+# the JSON flattener is a recursive walker over an irregular schema.
+[lint.per-file-ignores]
+"nvd-harvester.py" = ["PLR0912", "PLR0915"]
+"utils/utils.py" = ["PLR0913", "PLR0917", "PLR0912"]
+# Tests assert on concrete fixture sizes; naming each one as a constant hurts readability.
+"tests/*.py" = ["PLR2004"]
