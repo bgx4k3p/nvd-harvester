@@ -1,8 +1,13 @@
 # nvd-harvester
 
-_**Your go-to tool for Efficient Multi-Threaded NVD CVE Data Fetching**_
+`nvd-harvester` mirrors NIST NVD CVE data locally using concurrent NVD 2.0 API
+requests and incremental updates. It preserves each CVE as year-organized JSON
+and produces an aggregated, SQL-ready CSV for analysis and downstream systems.
 
-Tired of wrestling with the NVD CVE API? `nvd-harvester` is an open-source tool designed to efficiently fetch, mirror, and manage NVD CVE data. It provides a robust and reliable solution for keeping your vulnerability database up-to-date.
+The project is designed for repeatable collection when direct API access is too
+slow or unreliable for routine analysis. It retains the source records locally,
+retries transient API failures, and processes only changed data after the
+initial synchronization.
 
 ## Key Features
 
